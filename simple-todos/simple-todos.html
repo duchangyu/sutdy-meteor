@@ -1,0 +1,71 @@
+<head>
+  <title>simple-todos</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>To Do list<small> A simplest app powered by Meteor</small></h1>
+
+      <span>task to do : {{incompleteCount}} </span>
+
+      <div class="checkbox">
+        <label class="hide-completed">
+          <input type="checkbox" value="" checked="{{hideCompleted}}">
+          Hide Completed Tasks
+        </label>
+      </div>
+
+      {{> loginButtons}}
+
+      {{#if currentUser}}
+      
+      <h2>welcome {{currentUser.username}}</h2>
+        <form class="new-task" role="form">
+          <legend>What do you do next?</legend>
+        
+          <div class="form-group">
+            <label for="">task:</label>
+            <input id="text" type="text" class="form-control" placeholder="Input task">
+          </div>
+        
+          
+        
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      {{/if}}
+
+
+    </div>
+
+    <ul>
+        {{#each tasks}}
+          {{> task}}
+        {{/each}}
+
+    </ul>
+      
+  </div>
+  
+</body>
+
+<template name="task">
+  
+  <li class="{{#if checked}} checked {{/if}} {{#if private}} private {{/if}}">
+
+      <button class="delete"> &times;</button>
+      <input type="checkbox" checked = "{{checked}}" class = "toggle-checked" />
+      {{#if isOwner}}
+        <button class="toggle-private">
+          {{#if private}}
+            Private
+          {{else}}
+            Public
+          {{/if}}
+        </button>
+      {{/if}}
+      <span class="text">{{username}} - {{text}}</span>
+
+  </li>
+   
+</template>

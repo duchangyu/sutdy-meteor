@@ -1,0 +1,28 @@
+<head>
+  <title>myFirstMeteor</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!  daniel du</h1>
+
+  {{> hello}}
+
+  {{> helloName}}
+
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+
+
+</template>
+
+<template name="helloName">
+
+  your name : <input type="text" name="yourname" id="inputYourname" class="form-control" value="" required="required" pattern="" title="">
+  <button>Say Hello</button>
+
+  <p>Hello {{yourname}}</p>
+
+</template>
